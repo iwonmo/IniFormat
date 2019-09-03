@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="index.js"></script>
+</head>
+<body>
+<div>
+    <input type="file" id="files"/>
+</div>
+
+<script>
+    var inputElement = document.getElementById("files");
+    inputElement.addEventListener("change", handleFiles, false);
+    function handleFiles() {
+        var selectedFile = document.getElementById("files").files[0];
+        var reader = new FileReader();
+        reader.readAsText(selectedFile);
+        reader.onload = function(){
+            var ini = iniFormat(this.result)
+            console.log(ini);
+        };
+    }
+</script>
+</body>
+</html>
